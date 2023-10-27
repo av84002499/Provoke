@@ -1,30 +1,33 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 
 const Home = () => {
-  const [data, setData] = useState([]);
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("http://localhost:3100/api/data");
-      setData(response.data);
-    } catch (error) {
-      console.error("Error fetching data: ", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   return (
-    <div>
-      <ul>
-        {data.map((item) => (
-          <li key={item.id}>{item.name}</li>
-        ))}
-      </ul>
-    </div>
+    <table className="pricing-table">
+      <thead>
+        <tr>
+          <th>Plan</th>
+          <th>Monthly Price</th>
+          <th>Yearly Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Basic</td>
+          <td>$100</td>
+          <td>$8700</td>
+        </tr>
+        <tr>
+          <td>Standard</td>
+          <td>$200</td>
+          <td>$15600</td>
+        </tr>
+        <tr>
+          <td>Premium</td>
+          <td>$500</td>
+          <td>$37200</td>
+        </tr>
+      </tbody>
+    </table>
   );
 };
 
